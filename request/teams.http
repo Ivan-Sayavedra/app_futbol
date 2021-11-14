@@ -12,6 +12,9 @@ Content-Type: application/json
 ### obtener equipos
 GET http://localhost:3000/teams
 
+### obtener un equipo en específico
+GET http://localhost:3000/teams/6190dd5a4e522a968405f2fc
+
 ### borrar equipo
 DELETE http://localhost:3000/teams/61904b9ee1ffda4e8f85ece0
 

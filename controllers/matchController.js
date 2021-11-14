@@ -27,3 +27,35 @@ exports.createMatch = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getMatch = async (req,res,next) => {
+  const id = req.params.id
+  try{
+    const match = await Match.findOne({_id: id})
+    if(!match){
+      const error = new Error("La planilla de partido no ha sido encontrada")
+      error.statusCode = 404
+      throw error
+    }
+    res.status(200).json({match: match})
+  }catch(err){
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+}
+
+exports.getAllMatches = async (req,res,next) => {
+  try{
+    const matches = await Match.find()
+    res.status(200).json({matches: matches})
+  }catch(err){
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+}
+
+

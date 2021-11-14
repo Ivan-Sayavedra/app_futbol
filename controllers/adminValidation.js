@@ -85,10 +85,13 @@ exports.postCreateAdmin = async (req, res, next) => {
       error.statusCode = 422;
       throw error;
     }
+    const email = req.body.email
+    const name = req.body.name
+    const password = req.body.password
     admin = new Admin({
-      email: authorizedAdmin.authorizedEmail,
-      password: "hola",
-      name: "Miguel",
+      email: email,
+      password: password,
+      name: name,
     });
     const savedAdmin = await admin.save();
     res.status(201).json({
