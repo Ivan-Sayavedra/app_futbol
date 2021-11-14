@@ -1,0 +1,93 @@
+### crear equipo
+POST http://localhost:3000/teams
+Content-Type: application/json
+
+{
+    "name": "FC Bayern Munich",
+    "badgeURL": "afisugwp9asd",
+    "players": [{"name" : "lewandowski"}, {"name" : "muller"}, {"name" : "kimmich"}, {"name" : "hernandez"}],
+    "manager": "Nagelsmann"
+}
+
+### obtener equipos
+GET http://localhost:3000/teams
+
+### borrar equipo
+DELETE http://localhost:3000/teams/61904b9ee1ffda4e8f85ece0
+
+### editar nombre
+PATCH http://localhost:3000/teams/name
+Content-Type: application/json
+
+{
+    "teamId": "61904b9ee1ffda4e8f85ece0",
+    "newName": "Borussia Dortmund"
+}
+
+### editar url del escudo
+PATCH http://localhost:3000/teams/badge
+Content-Type: application/json
+
+{
+    "teamId": "61904b9ee1ffda4e8f85ece0",
+    "badgeURL": "hola"
+}
+
+### asignar resultado
+POST http://localhost:3000/teams/result
+Content-Type: application/json
+
+{
+    "teamId": "61904b8ee1ffda4e8f85ece0",
+    "result1": 3,
+    "result2": 4
+}
+
+### añadir jugador
+PATCH http://localhost:3000/teams/add-player
+Content-Type: application/json
+
+{
+    "teamId": "61903b9ee1ffda4e8f85ece0",
+    "name": "malen"
+}
+
+### borrar jugador
+POST http://localhost:3000/teams/delete-player
+Content-Type: application/json
+
+{
+    "teamId": "61904c2c6636743bfc8076d3",
+    "playerId": "61904c2c6sda646743bfc8076d7"
+}
+
+### borrar jugador
+PATCH http://localhost:3000/teams/edit-player
+Content-Type: application/json
+
+{
+    "teamId": "619056d0739339084c4fe478",
+    "playerId": "61905d36719fcd968ffac7b0",
+    "newName": "sabitzer"
+}
+
+### recuperar jugadores
+GET http://localhost:3000/teams/players/619056d0739339084c4fe478
+
+
+### recuperar plantilla
+GET http://localhost:3000/teams/squad/612056d0739339084c4fe478
+
+
+### añadir técnico
+POST http://localhost:3000/teams/manager
+Content-Type: application/json
+
+{
+    "teamId": "629056d0739339084c4fe478",
+    "manager": "Nalgelsmann"
+}
+
+
+### recuperar técnico
+GET http://localhost:3000/teams/manager/619056d0739339084c4fe478

@@ -1,0 +1,8 @@
+###
+POST http://localhost:3000/matches
+Content-Type: application/json
+
+{
+    "team1" : {"teamId": "619056d0739339084c4fe478", "score": "3", "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 2}]},
+    "team2" : {"teamId": "6190dd5a4a522a968405f2fc","score": "2", "injuredPlayers": ["reus"], "playersWithYellowCard": ["reus"], "scorers": [{"name": "Haaland", "goals": 2}]}
+}

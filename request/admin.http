@@ -1,0 +1,52 @@
+### Admins
+
+###
+GET http://localhost:3000/adminAuth
+
+###
+POST http://localhost:3000/adminAuth
+Content-Type: application/json
+
+{
+    "userEmail": "miguelrvg5@gmail.com"
+}
+
+###
+PUT http://localhost:3000/adminAuth
+Content-Type: application/json
+
+{
+    "email": "admin1@gmail.com",
+    "newEmail": "miguelrvg312@gmail.com",
+    "newPassword": "cola",
+    "newName": "cola"
+}
+
+###
+DELETE http://localhost:3000/adminAuth
+Content-Type: application/json
+
+{
+    "email": "miguelrvg5@gmail.com",
+    "password": "hola"
+}
+
+### Authorized Admin
+
+###
+POST http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
+
+###
+DELETE http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
+
+###
+GET http://localhost:3000/authorizedAdmin
+
+###
+PUT http://localhost:3000/authorizedAdmin
+Content-Type: application/json
+
+{
+    "email": "miguelrvg25@gmail.com",
+    "newEmail": "miguelrvg35@gmail.com"
+}
