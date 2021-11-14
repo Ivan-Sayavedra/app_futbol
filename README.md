@@ -1,7 +1,7 @@
 # app_futbol
 Aplicación para administrar una liga de futbol
 
-Para poder ejecutar la aplicación se encesitará tener instalado NodeJS y MongoDB en el sistema
+Para poder ejecutar la aplicación se necesitará tener instalado NodeJS y MongoDB en el sistema
 
 Puede instalar MongoDB en la siguiente URL
 https://www.mongodb.com/try/download/enterprise
