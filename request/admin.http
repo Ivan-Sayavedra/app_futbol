@@ -34,7 +34,12 @@ Content-Type: application/json
 ### Authorized Emails
 
 ### crear email de administrador
-POST http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
+POST http://localhost:3000/authorizedAdmin
+Content-Type: application/json
+
+{
+    "email": "miguelrvg25@gmail.com"
+}
 
 ### eliminar email de administrador
 DELETE http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com

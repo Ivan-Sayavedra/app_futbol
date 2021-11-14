@@ -15,7 +15,7 @@ exports.getAuthorizedEmails = async (req, res, next) => {
 };
 
 exports.createAuthorizedEmail = async (req, res, next) => {
-  const email = req.params.email;
+  const email = req.body.email;
   try {
     const authorizedAdmin = await AuthorizedAdmin.findOne({
       authorizedEmail: email,

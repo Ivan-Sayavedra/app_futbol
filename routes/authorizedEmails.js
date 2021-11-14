@@ -4,7 +4,7 @@ const authorizedAdminController = require("../controllers/authorizedEmails");
 
 const router = express.Router();
 
-router.post("/:email", authorizedAdminController.createAuthorizedEmail);
+router.post("/", authorizedAdminController.createAuthorizedEmail);
 
 router.get("/", authorizedAdminController.getAuthorizedEmails);
 
