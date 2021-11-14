@@ -16,8 +16,8 @@ Para iniciar la aplicación, ejecutar en la consola el comando "npm start" y esp
 se imprima un mensaje con la leyenda "DB conected :)".
 
 Para crear un perfil de administrador se necesita que su correo haya sido previamente registrado
-como un email válido (solo se le permitirá el registro a las personas que ya se sepa que serpan organizadores de
-la liga). Para crear un email válido usar la siguiente ruta con el correo como parámetro en la URL:
+como un email válido (solo se le permitirá el registro a las personas que ya se sepa que serán organizadores de
+la liga). Para crear un email válido usar la siguiente ruta con el email dentro del body:
 
 
 POST http://localhost:3000/authorizedAdmin
