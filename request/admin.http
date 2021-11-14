@@ -1,9 +1,9 @@
 ### Admins
 
-###
+### recuperar administradores
 GET http://localhost:3000/adminAuth
 
-###
+### crear administrador
 POST http://localhost:3000/adminAuth
 Content-Type: application/json
 
@@ -11,18 +11,18 @@ Content-Type: application/json
     "userEmail": "miguelrvg5@gmail.com"
 }
 
-###
+### editar perfil 
 PUT http://localhost:3000/adminAuth
 Content-Type: application/json
 
 {
     "email": "admin1@gmail.com",
     "newEmail": "miguelrvg312@gmail.com",
-    "newPassword": "cola",
-    "newName": "cola"
+    "newPassword": "hola",
+    "newName": "Miguel"
 }
 
-###
+### eliminar perfil de administrador
 DELETE http://localhost:3000/adminAuth
 Content-Type: application/json
 
@@ -31,18 +31,18 @@ Content-Type: application/json
     "password": "hola"
 }
 
-### Authorized Admin
+### Authorized Emails
 
-###
+### crear email de administrador
 POST http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
 
-###
+### eliminar email de administrador
 DELETE http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
 
-###
+### obtener emails autorizados
 GET http://localhost:3000/authorizedAdmin
 
-###
+### editar email de administrador
 PUT http://localhost:3000/authorizedAdmin
 Content-Type: application/json
 
