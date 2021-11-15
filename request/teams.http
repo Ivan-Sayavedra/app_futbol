@@ -36,16 +36,6 @@ Content-Type: application/json
     "badgeURL": "hola"
 }
 
-### asignar resultado
-POST http://localhost:3000/teams/result
-Content-Type: application/json
-
-{
-    "teamId": "61904b8ee1ffda4e8f85ece0",
-    "result1": 3,
-    "result2": 4
-}
-
 ### añadir jugador
 PATCH http://localhost:3000/teams/add-player
 Content-Type: application/json
