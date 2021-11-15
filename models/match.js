@@ -9,13 +9,10 @@ const matchSchema = new Schema({
   },
   teams:[
       {
-        teamId: {
-          type: Schema.Types.ObjectId,
-          ref: 'Team',
-          required: true
+        team: {
+          type: Object
         },
         score: { type: Number, required: true },
-        injuredPlayers: [],
         injuredPlayers: [],
         playersWithRedCard: [],
         playersWithYellowCard: [],

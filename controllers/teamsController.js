@@ -297,28 +297,3 @@ exports.getManager = async (req,res,next) => {
     }
 }
 
-/*
-exports.assignResults = async (req, res, next) => {
-  const teamId = req.body.teamId;
-  try {
-    const team = await Team.findOne({ _id: teamId });
-    if (!team) {
-      const error = new Error("EL equipo no ha sido encontrado");
-      error.statusCode = 404;
-      throw error;
-    }
-    const result1 = req.body.result1;
-    const result2 = req.body.result2;
-    const updatedTeam = await team.assignResult(result1,result2);
-    res.status(200).json({
-      message: "El resultado ha sido asignado",
-      record: updatedTeam.record,
-    });
-  } catch (err) {
-    if (!err.statusCode) {
-      err.statudCode = 500;
-    }
-    next(err);
-  }
-};
-*/

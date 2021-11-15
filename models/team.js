@@ -10,7 +10,7 @@ const teamSchema = new Schema({
   badgeURL: {
     type: String,
   },
-   squad: {
+  squad: {
     players: [
       {
         name: {
@@ -20,6 +20,28 @@ const teamSchema = new Schema({
       },
     ],
     manager: String,
+  },
+  record: {
+    wins: {
+      type: Number,
+      default: 0,
+    },
+    draws: {
+      type: Number,
+      default: 0,
+    },
+    losses: {
+      type: Number,
+      default: 0,
+    },
+  },
+  goalsScored: {
+    type: Number,
+    default: 0,
+  },
+  goalsAgainst: {
+    type: Number,
+    default: 0,
   },
 });
 
@@ -39,21 +61,20 @@ teamSchema.methods.removePlayerFromSquad = function (playerId) {
 teamSchema.methods.editPlayerFromSquad = async function (player) {
   try {
     const searchedPlayer = this.squad.players.filter((p) => {
-        return p._id.toString() === player.playerId;
-      });
-      if(searchedPlayer.length === 0){
-        const error = new Error("El jugador no ha sido encontrado")
-        error.statusCode = 404
-        throw error
-      }
-   const updatedPlayers =  this.squad.players.filter((p) => {
-    return p._id.toString() !== player.playerId;
-  });
-  updatedPlayers.push(player)
-  this.squad.players = updatedPlayers
-  const updatedSquad = await this.save()
-  return updatedSquad
-
+      return p._id.toString() === player.playerId;
+    });
+    if (searchedPlayer.length === 0) {
+      const error = new Error("El jugador no ha sido encontrado");
+      error.statusCode = 404;
+      throw error;
+    }
+    const updatedPlayers = this.squad.players.filter((p) => {
+      return p._id.toString() !== player.playerId;
+    });
+    updatedPlayers.push(player);
+    this.squad.players = updatedPlayers;
+    const updatedSquad = await this.save();
+    return updatedSquad;
   } catch (err) {
     if (!err.statusCode) {
       err.statudCode = 500;
@@ -79,37 +100,35 @@ teamSchema.methods.getSquad = function () {
   return this.squad;
 };
 
-
+teamSchema.methods.assignResult = function (result1, result2, boolean) {
+  console.log(result1, result2);
+  if (boolean === true) {
+    this.goalsScored += result1;
+    this.goalsAgainst += result2;
+    if (result1 > result2) {
+      this.record.wins += 1;
+      return this.save();
+    }
+    if (result1 === result2) {
+      this.record.draws += 1;
+      return this.save();
+    }
+    this.record.losses += 1;
+    return this.save();
+  } else {
+    this.goalsScored -= result1;
+    this.goalsAgainst -= result2;
+    if (result1 > result2) {
+      this.record.wins -= 1;
+      return this.save();
+    }
+    if (result1 === result2) {
+      this.record.draws -= 1;
+      return this.save();
+    }
+    this.record.losses -= 1;
+    return this.save();
+  }
+};
 
 module.exports = mongoose.model("Team", teamSchema);
-
-
-/* record: {
-    wins: {
-      type: Number,
-      default: 0,
-    },
-    draws: {
-      type: Number,
-      default: 0,
-    },
-    losses: {
-      type: Number,
-      default: 0,
-    },
-  },
-*/
-
-/*teamSchema.methods.assignResult = function (result1, result2) {
-  if (result1 > result2) {
-    this.record.wins += 1;
-    return this.save();
-  }
-  if (result1 === result2) {
-    this.record.draws += 1;
-    return this.save();
-  }
-  this.record.losses += 1;
-  return this.save();
-};
-*/

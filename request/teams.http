@@ -3,20 +3,20 @@ POST http://localhost:3000/teams
 Content-Type: application/json
 
 {
-    "name": "FC Bayern Munich",
+    "name": "Dortmund",
     "badgeURL": "afisugwp9asd",
-    "players": [{"name" : "lewandowski"}, {"name" : "muller"}, {"name" : "kimmich"}, {"name" : "hernandez"}],
-    "manager": "Nagelsmann"
+    "players": [{"name" : "Halaand"}, {"name" : "Hummels"}, {"name" : "Guerreiro"}, {"name" : "Akanji"}],
+    "manager": "Rose"
 }
 
 ### obtener equipos
 GET http://localhost:3000/teams
 
 ### obtener un equipo en específico
-GET http://localhost:3000/teams/6190dd5a4e522a968405f2fc
+GET http://localhost:3000/teams/6190dd5a4a522a968405f2fc
 
 ### borrar equipo
-DELETE http://localhost:3000/teams/61904b9ee1ffda4e8f85ece0
+DELETE http://localhost:3000/teams/6190dd5a4a522a968405f2fc
 
 ### editar nombre
 PATCH http://localhost:3000/teams/name

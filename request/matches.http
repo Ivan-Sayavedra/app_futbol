@@ -3,9 +3,27 @@ POST http://localhost:3000/matches
 Content-Type: application/json
 
 {
-    "team1" : {"teamId": "619056d0739339084c4fe478", "score": "3", "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 2}]},
-    "team2" : {"teamId": "6190dd5a4a522a968405f2fc","score": "2", "injuredPlayers": ["reus"], "playersWithYellowCard": ["reus"], "playersWithRedCard":["hummels"], "scorers": [{"name": "Haaland", "goals": 2}]}
+    "team1" : {"teamId": "61921694caacf5bca3276a92", "score": 5, "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 2}]},
+    "team2" : {"teamId": "619216bbcaacf5bca3276a98","score": 4, "injuredPlayers": ["reus"], "playersWithYellowCard": ["reus"], "playersWithRedCard":["hummels"], "scorers": [{"name": "Haaland", "goals": 2}]},
+    "date": "2021-11-15T08:37:18.736Z"
 }
 
-###
+
+### Obtener todas las planillas de partido
 GET http://localhost:3000/matches
+
+### Obtener una planilla de partido específica
+GET http://localhost:3000/matches/619209c1caacf5bca3276b0c
+
+### Eliminar una planilla de partido
+DELETE http://localhost:3000/matches/61923204b7648d69810a57c2
+
+### Modificar los goles en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos)
+PATCH http://localhost:3000/matches/score/
+Content-Type: application/json
+
+{
+    "matchId": "619223c422afe3f600434e1c",
+    "team1" : {"id": "61921694caacf5bca3276a92", "newScore": 2},
+    "team2": {"id": "619216bbcaacf5bca3276a98", "newScore": 3}
+}

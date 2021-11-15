@@ -8,6 +8,12 @@ router.post("/", matchController.createMatch)
 
 router.get("/:id", matchController.getMatch)
 
-router.post("/", matchController.getAllMatches)
+router.get("/", matchController.getAllMatches)
+
+router.delete("/:id", matchController.deleteMatch)
+
+router.patch("/date", matchController.updateDate)
+
+router.patch("/score", matchController.updateScore)
 
 module.exports = router;
