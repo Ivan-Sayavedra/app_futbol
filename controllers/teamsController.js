@@ -288,6 +288,11 @@ exports.getManager = async (req,res,next) => {
         throw error;
       }
       const manager = await team.getManager()
+      if (!manager) {
+        const error = new Error("El equipo no cuenta con un DT asignado");
+        error.statusCode = 404;
+        throw error;
+      }
       res.status(200).json({manager: manager})
     }catch(err){
         if (!err.statusCode) {
