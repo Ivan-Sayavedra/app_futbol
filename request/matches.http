@@ -1,10 +1,23 @@
-### crear una planilla de partido
+### crear una planilla de partido 
 POST http://localhost:3000/matches
 Content-Type: application/json
 
 {
-    "team1" : {"teamId": "61921694caacf5bca3276a92", "score": 5, "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 3}]},
-    "team2" : {"teamId": "619216bbcaacf5bca3276a98","score": 4, "injuredPlayers": ["reus"], "playersWithYellowCard": ["reus"], "playersWithRedCard":["hummels"], "scorers": [{"name": "Haaland", "goals": 2}]},
+    "team1":{
+    "teamId": "61921694caacf5bca3276a92",
+    "score": 5, 
+    "injuredPlayers": [{"name": "muller", "id":"61921694caacf5bca3276a94"}], 
+    "playersWithYellowCard": [{"name": "kimmich", "id":"61921694caacf5bca3276a95"},{"name":"hernandez", "id":"61921694caacf5bca3276a96"}], 
+    "scorers": [{"name": "lewandowski","id":"61921694caacf5bca3276a93","goals": 3},{"name": "muller", "id":"61921694caacf5bca3276a94","goals": 2}]
+    },
+    "team2":{
+    "teamId": "619300fa48c2abd2af039f5d",
+   "score": 4, 
+    "injuredPlayers": [{"name": "Vinicius", "id":"619300fa48c2abd2af039f5f"}], 
+    "playersWithYellowCard": [{"name": "Alaba", "id":"619300fa48c2abd2af039f61"}], 
+    "playersWithRedCard":[{"name":"Militao", "id":"619300fa48c2abd2af039f60"}], 
+    "scorers": [{"name": "benzema","id":"619300fa48c2abd2af039f5e","goals": 2},{"name": "Vinicius", "id":"619300fa48c2abd2af039f5f","goals": 2}]
+    },
     "date": "2021-11-15T08:37:18.736Z"
 }
 
@@ -16,7 +29,7 @@ GET http://localhost:3000/matches
 GET http://localhost:3000/matches/619209c1caacf5bca3276b0c
 
 ### Eliminar una planilla de partido
-DELETE http://localhost:3000/matches/61923204b7648d69810a57c2
+DELETE http://localhost:3000/matches/61933434e6d661e8f78e8ff7
 
 ### Modificar los goles en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos)
 PATCH http://localhost:3000/matches/score/
@@ -26,4 +39,74 @@ Content-Type: application/json
     "matchId": "619223c422afe3f600434e1c",
     "team1" : {"id": "61921694caacf5bca3276a92", "newScore": 2},
     "team2": {"id": "619216bbcaacf5bca3276a98", "newScore": 3}
+}
+
+### Modificar los goleadores en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos, así como el resultado en la planilla)
+PATCH http://localhost:3000/matches/scorers/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "619300fa48c2abd2af039f5d",
+    "player": {"name": "Lewandowski","id":"61921694caacf5bca3276a93","goals": 19}
+}
+
+### Añadir jugador lesionado a planilla de partido
+PATCH http://localhost:3000/matches/add-injuries/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "player": {"name": "hernandez", "id":"61921694cbacf5bca3276a96"}
+}
+
+### Eliminar jugador lesionado de planilla de partido
+PATCH http://localhost:3000/matches/delete-injuries/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "playerId": "61921694cbacf5bca3276a96"
+}
+
+### Añadir tarjeta roja a un jugador
+PATCH http://localhost:3000/matches/add-red-card/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "player": {"name": "hernandez", "id":"61921694cbacf5bca3276a96"}
+}
+
+### Eliminar tarjeta roja a un jugador
+PATCH http://localhost:3000/matches/delete-red-card/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "playerId": "61921694cbacf5bca3276a96"
+}
+
+### Añadir tarjeta amarilla a un jugador
+PATCH http://localhost:3000/matches/add-yellow-card/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "player": {"name": "lewandowski", "id":"61921694caacf5bca3276a93"}
+}
+
+### Eliminar tarjeta amarilla a un jugador
+PATCH http://localhost:3000/matches/delete-yellow-card/
+Content-Type: application/json
+
+{
+    "matchId": "6193347f23f2c550088affff",
+    "teamId" : "61921694caacf5bca3276a92",
+    "playerId": "61921694caacf5bca3276a93"
 }

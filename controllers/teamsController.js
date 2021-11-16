@@ -220,7 +220,7 @@ exports.editPlayer = async (req, res, next) => {
     const playerId = req.body.playerId;
     const player = {
       name: newName,
-      playerId: playerId,
+      _id: playerId,
     };
     const result = await team.editPlayerFromSquad(player);
     if (!result.squad) {

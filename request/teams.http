@@ -62,9 +62,9 @@ PATCH http://localhost:3000/teams/edit-player
 Content-Type: application/json
 
 {
-    "teamId": "619056d0739339084c4fe478",
-    "playerId": "61905d36719fcd968ffac7b0",
-    "newName": "sabitzer"
+    "teamId": "619216bbcaacf5bca3276a98",
+    "playerId": "619216bbcaacf5bca3276a9a",
+    "newName": "malen"
 }
 
 ### recuperar jugadores de un equipo específico

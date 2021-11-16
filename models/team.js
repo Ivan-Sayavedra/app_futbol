@@ -61,7 +61,7 @@ teamSchema.methods.removePlayerFromSquad = function (playerId) {
 teamSchema.methods.editPlayerFromSquad = async function (player) {
   try {
     const searchedPlayer = this.squad.players.filter((p) => {
-      return p._id.toString() === player.playerId;
+      return p._id.toString() === player._id;
     });
     if (searchedPlayer.length === 0) {
       const error = new Error("El jugador no ha sido encontrado");
@@ -69,8 +69,9 @@ teamSchema.methods.editPlayerFromSquad = async function (player) {
       throw error;
     }
     const updatedPlayers = this.squad.players.filter((p) => {
-      return p._id.toString() !== player.playerId;
+      return p._id.toString() !== player._id;
     });
+    player._id = new mongoose.Types.ObjectId(player._id)
     updatedPlayers.push(player);
     this.squad.players = updatedPlayers;
     const updatedSquad = await this.save();

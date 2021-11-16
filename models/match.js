@@ -7,18 +7,19 @@ const matchSchema = new Schema({
     type: Date,
     required: true,
   },
-  teams:[
-      {
-        team: {
-          type: Object
-        },
-        score: { type: Number, required: true },
-        injuredPlayers: [],
-        playersWithRedCard: [],
-        playersWithYellowCard: [],
-        scorers: []
-      }
-    ]
+  teams: [
+    {
+      team: {
+        type: Object,
+      },
+      score: { type: Number, required: true },
+      injuredPlayers: [],
+      playersWithRedCard: [],
+      playersWithYellowCard: [],
+      scorers: [],
+      _id: false,
+    },
+  ],
 });
 
 matchSchema.methods.assignScore = function (score1, score2) {
@@ -29,19 +30,20 @@ matchSchema.methods.assignScore = function (score1, score2) {
 
 matchSchema.methods.addInjuredPlayers = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       this.teams[i].injuredPlayers.push(player);
     }
   }
   return this.save();
 };
 
-matchSchema.methods.deleteInjuredPlayers = function (id, player) {
+matchSchema.methods.deleteInjuredPlayers = function (id, playerId) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       const updatedInjuredPlayers = this.teams[i].injuredPlayers.filter((p) => {
-        return p._id.toString() !== player.id;
+        return p.id.toString() !== playerId;
       });
+      console.log(updatedInjuredPlayers);
       this.teams[i].injuredPlayers = updatedInjuredPlayers;
     }
   }
@@ -51,19 +53,19 @@ matchSchema.methods.deleteInjuredPlayers = function (id, player) {
 
 matchSchema.methods.addPlayersWithRedCard = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       this.teams[i].playersWithRedCard.push(player);
     }
   }
   return this.save();
 };
 
-matchSchema.methods.deletePlayersWithRedCard = function (id, player) {
+matchSchema.methods.deletePlayersWithRedCard = function (id, playerId) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       const updatedAdmonishedPlayers = this.teams[i].playersWithRedCard.filter(
         (p) => {
-          return p._id.toString() !== player.id;
+          return p.id.toString() !== playerId;
         }
       );
       this.teams[i].playersWithRedCard = updatedAdmonishedPlayers;
@@ -74,20 +76,21 @@ matchSchema.methods.deletePlayersWithRedCard = function (id, player) {
 
 matchSchema.methods.addPlayersWithYellowCard = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       this.teams[i].playersWithYellowCard.push(player);
     }
   }
   return this.save();
 };
 
-matchSchema.methods.deletePlayersWithYellowCard = function (id, player) {
+matchSchema.methods.deletePlayersWithYellowCard = function (id, playerId) {
+  console.log(id,playerId)
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       const updatedAdmonishedPlayers = this.teams[
         i
       ].playersWithYellowCard.filter((p) => {
-        return p._id.toString() !== player.id;
+        return p.id.toString() !== playerId;
       });
       this.teams[i].playersWithYellowCard = updatedAdmonishedPlayers;
     }
@@ -97,8 +100,9 @@ matchSchema.methods.deletePlayersWithYellowCard = function (id, player) {
 
 matchSchema.methods.addScorers = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       this.teams[i].scorers.push(player);
+      this.teams[i].score += player.goals
     }
   }
   return this.save();
@@ -106,11 +110,12 @@ matchSchema.methods.addScorers = function (id, player) {
 
 matchSchema.methods.deleteScorers = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
-    if (this.teams[i].id === id) {
+    if (this.teams[i].team._id.toString() === id) {
       const updatedScorers = this.teams[i].scorers.filter((p) => {
-        return p._id.toString() !== player.id;
+        return p.id.toString() !== player.id;
       });
       this.teams[i].scorers = updatedScorers;
+      this.teams[i].score -= player.goals
     }
   }
 
