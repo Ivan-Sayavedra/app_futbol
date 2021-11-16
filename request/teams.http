@@ -3,22 +3,25 @@ POST http://localhost:3000/teams
 Content-Type: application/json
 
 {
-    "name": "Dortmund",
+    "name": "Madrid",
     "badgeURL": "afisugwp9asd",
-    "players": [{"name" : "Halaand"}, {"name" : "Hummels"}, {"name" : "Guerreiro"}, {"name" : "Akanji"}],
+    "players": [{"name" : "Benzema"}, {"name" : "Vinicius"}, {"name" : "Militao"}, {"name" : "Alaba"}],
     "manager": "Rose"
 }
 
-### obtener equipos
+### obtener todos los equipos
 GET http://localhost:3000/teams
+
+### obtener todos los equipos por posiciones (ideal para tabla de puntaje de la liga) 
+GET http://localhost:3000/teams/positions
 
 ### obtener un equipo en específico
 GET http://localhost:3000/teams/6190dd5a4a522a968405f2fc
 
-### borrar equipo
+### borrar un equipo
 DELETE http://localhost:3000/teams/6190dd5a4a522a968405f2fc
 
-### editar nombre
+### editar nombre de equipo
 PATCH http://localhost:3000/teams/name
 Content-Type: application/json
 
@@ -36,7 +39,7 @@ Content-Type: application/json
     "badgeURL": "hola"
 }
 
-### añadir jugador
+### añadir jugador (se creará un ID para el jugador en el momento de ser añadido)
 PATCH http://localhost:3000/teams/add-player
 Content-Type: application/json
 
@@ -54,7 +57,7 @@ Content-Type: application/json
     "playerId": "61904c2c6sda646743bfc8076d7"
 }
 
-### borrar jugador
+### editar jugador
 PATCH http://localhost:3000/teams/edit-player
 Content-Type: application/json
 
@@ -64,15 +67,15 @@ Content-Type: application/json
     "newName": "sabitzer"
 }
 
-### recuperar jugadores
+### recuperar jugadores de un equipo específico
 GET http://localhost:3000/teams/players/619056d0739339084c4fe478
 
 
-### recuperar plantilla
+### recuperar plantilla de un equipo específico
 GET http://localhost:3000/teams/squad/612056d0739339084c4fe478
 
 
-### añadir técnico
+### añadir o cambiar técnico de un equipo
 POST http://localhost:3000/teams/manager
 Content-Type: application/json
 
@@ -82,5 +85,6 @@ Content-Type: application/json
 }
 
 
-### recuperar técnico
+### recuperar técnico de un equipo
 GET http://localhost:3000/teams/manager/619056d0739339084c4fe478
+

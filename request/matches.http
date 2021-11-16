@@ -3,7 +3,7 @@ POST http://localhost:3000/matches
 Content-Type: application/json
 
 {
-    "team1" : {"teamId": "61921694caacf5bca3276a92", "score": 5, "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 2}]},
+    "team1" : {"teamId": "61921694caacf5bca3276a92", "score": 5, "injuredPlayers": ["coman"], "playersWithYellowCard": ["Kimmich", "Pavard"], "scorers": [{"name": "Lewandowski", "goals": 2},{"name": "Muller", "goals": 3}]},
     "team2" : {"teamId": "619216bbcaacf5bca3276a98","score": 4, "injuredPlayers": ["reus"], "playersWithYellowCard": ["reus"], "playersWithRedCard":["hummels"], "scorers": [{"name": "Haaland", "goals": 2}]},
     "date": "2021-11-15T08:37:18.736Z"
 }
