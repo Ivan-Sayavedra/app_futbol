@@ -42,7 +42,7 @@ exports.createAdmin = async (req, res, next) => {
     console.log(token);
     authorizedAdmin.token = token;
     authorizedAdmin.tokenExpiration = tokenExpiration;
-    const authorizedAdminSaved = await authorizedAdmin.save();
+    await authorizedAdmin.save();
 
     sgMail.setApiKey(
       "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"
@@ -55,7 +55,7 @@ exports.createAdmin = async (req, res, next) => {
       html: `<p>You requested a password reset</p>
       <p>Click this <a href="http://localhost:3000/adminAuth/register/${token}"> link</a> to set a new password.</p>`,
     };
-    const sentEmail = await sgMail.send(mail);
+    await sgMail.send(mail);
     res.status(200).json({
       message: "Se ha enviado un correo electrónico con el link de registro",
     });
@@ -118,7 +118,7 @@ exports.updateAdmin = async (req, res, next) => {
     admin.email = req.body.newEmail;
     admin.password = req.body.newPassword;
     admin.name = req.body.newName;
-    const adminUpdated = await admin.save();
+     await admin.save();
     res.status(200).json({
       message: "El usuario se ha actualizado satisfactoriamente",
       admin: admin,
