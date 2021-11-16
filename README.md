@@ -49,7 +49,7 @@ Content-Type: application/json
     "name": "miguel"
 }
 
-Los archivos "admin.http" y "teams.http" tienen todas las rutas que actualmente se han desarrollado y un ejemplo de como debe de ser 
+Los archivos "admin.http" y "teams.http" en la carpeta "request" tienen todas las rutas que actualmente se han desarrollado y un ejemplo de como debe de ser 
 enviada la información necesaria al backend para ser procesada, al hacer click se devolverá la información que será enviada al frontend.
 
 Las funciones para las planillas de partido, subir las imagenes de los escudos de los equipos y la autenticación de usuarios siguen en desarrollo :)
