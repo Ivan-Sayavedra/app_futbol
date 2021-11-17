@@ -29,6 +29,8 @@ fetch("http://localhost:3000/matches/delete-injuries/",{
     }
 })
 
+El token anteriormente descrito tiene una duración de 2 horas, después quedará invalido y se tendrá que volver a iniciar sesión.
+
 Debido a que la base de datos ya ha sido desplegada, se pueden usar los siguientes datos para realizar un Login dentro de la app:
 
 POST http://localhost:3000/adminAuth/login
