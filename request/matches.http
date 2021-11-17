@@ -1,18 +1,19 @@
 ### crear una planilla de partido 
 POST http://localhost:3000/matches
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "team1":{
-    "teamId": "61921694caacf5bca3276a92",
-    "score": 5, 
+    "teamId": "6194e91f5696ba8ff06b5583",
+    "score": 0, 
     "injuredPlayers": [{"name": "muller", "id":"61921694caacf5bca3276a94"}], 
     "playersWithYellowCard": [{"name": "kimmich", "id":"61921694caacf5bca3276a95"},{"name":"hernandez", "id":"61921694caacf5bca3276a96"}], 
     "scorers": [{"name": "lewandowski","id":"61921694caacf5bca3276a93","goals": 3},{"name": "muller", "id":"61921694caacf5bca3276a94","goals": 2}]
     },
     "team2":{
-    "teamId": "619300fa48c2abd2af039f5d",
-   "score": 4, 
+    "teamId": "6194e70aa0222a2e76ca9e25",
+   "score": 2, 
     "injuredPlayers": [{"name": "Vinicius", "id":"619300fa48c2abd2af039f5f"}], 
     "playersWithYellowCard": [{"name": "Alaba", "id":"619300fa48c2abd2af039f61"}], 
     "playersWithRedCard":[{"name":"Militao", "id":"619300fa48c2abd2af039f60"}], 
@@ -26,44 +27,60 @@ Content-Type: application/json
 GET http://localhost:3000/matches
 
 ### Obtener una planilla de partido específica
-GET http://localhost:3000/matches/619209c1caacf5bca3276b0c
+GET http://localhost:3000/matches/6194e9325696ba8ff06b5593
 
 ### Eliminar una planilla de partido
-DELETE http://localhost:3000/matches/61933434e6d661e8f78e8ff7
+DELETE http://localhost:3000/matches/6194e9955696ba8ff06b55bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 ### Modificar los goles en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos)
 PATCH http://localhost:3000/matches/score/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "matchId": "619223c422afe3f600434e1c",
-    "team1" : {"id": "61921694caacf5bca3276a92", "newScore": 2},
-    "team2": {"id": "619216bbcaacf5bca3276a98", "newScore": 3}
+    "matchId": "6194e97b5696ba8ff06b55af",
+    "team1" : {"id": "6194e91f5696ba8ff06b5583", "newScore": 2},
+    "team2": {"id": "6194e70aa0222a2e76ca9e25", "newScore": 3}
 }
 
-### Modificar los goleadores en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos, así como el resultado en la planilla)
-PATCH http://localhost:3000/matches/scorers/
+### Añadir goleadores en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos, así como el resultado en la planilla)
+PATCH http://localhost:3000/matches/add-scorers/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "matchId": "6193347f23f2c550088affff",
-    "teamId" : "619300fa48c2abd2af039f5d",
-    "player": {"name": "Lewandowski","id":"61921694caacf5bca3276a93","goals": 19}
+    "matchId": "6194e97b5696ba8ff06b55af",
+    "teamId" : "6194e91f5696ba8ff06b5583",
+    "player": {"name": "Lewandowski","id":"61921694caacf5bca3276a93","goals": 5}
+}
+
+### MAñadir goleadores en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos, así como el resultado en la planilla)
+PATCH http://localhost:3000/matches/delete-scorers/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+
+{
+    "matchId": "6194e97b5696ba8ff06b55af",
+    "teamId" : "6194e91f5696ba8ff06b5583",
+    "playerId": "61921694caacf5bca3276a93"
 }
 
 ### Añadir jugador lesionado a planilla de partido
 PATCH http://localhost:3000/matches/add-injuries/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "matchId": "6193347f23f2c550088affff",
-    "teamId" : "61921694caacf5bca3276a92",
+    "matchId": "6194e97b5696ba8ff06b55af",
+    "teamId" : "6194e91f5696ba8ff06b5583",
     "player": {"name": "hernandez", "id":"61921694cbacf5bca3276a96"}
 }
 
 ### Eliminar jugador lesionado de planilla de partido
 PATCH http://localhost:3000/matches/delete-injuries/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "matchId": "6193347f23f2c550088affff",
@@ -74,6 +91,7 @@ Content-Type: application/json
 ### Añadir tarjeta roja a un jugador
 PATCH http://localhost:3000/matches/add-red-card/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "matchId": "6193347f23f2c550088affff",
@@ -84,6 +102,7 @@ Content-Type: application/json
 ### Eliminar tarjeta roja a un jugador
 PATCH http://localhost:3000/matches/delete-red-card/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "matchId": "6193347f23f2c550088affff",
@@ -94,6 +113,7 @@ Content-Type: application/json
 ### Añadir tarjeta amarilla a un jugador
 PATCH http://localhost:3000/matches/add-yellow-card/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "matchId": "6193347f23f2c550088affff",
@@ -104,6 +124,7 @@ Content-Type: application/json
 ### Eliminar tarjeta amarilla a un jugador
 PATCH http://localhost:3000/matches/delete-yellow-card/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
     "matchId": "6193347f23f2c550088affff",

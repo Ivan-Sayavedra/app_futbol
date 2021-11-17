@@ -1,90 +1,96 @@
 ### crear equipo
 POST http://localhost:3000/teams
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "name": "Madrid",
-    "badgeURL": "afisugwp9asd",
-    "players": [{"name" : "Benzema"}, {"name" : "Vinicius"}, {"name" : "Militao"}, {"name" : "Alaba"}],
-    "manager": "Rose"
+    "name": "Bayern",
+    "players": [{"name" : "muller"}, {"name" : "kimmich"}, {"name" : "hernandez"}, {"name" : "lewandowski"}],
+    "manager": "Nagelsmann"
 }
 
 ### obtener todos los equipos
 GET http://localhost:3000/teams
 
-### obtener todos los equipos por posiciones (ideal para tabla de puntaje de la liga) 
+### obtener todos los equipos por posiciones, sin datos de la plantilla (ideal para tablas de puntaje de la liga) 
 GET http://localhost:3000/teams/positions
 
 ### obtener un equipo en específico
-GET http://localhost:3000/teams/6190dd5a4a522a968405f2fc
+GET http://localhost:3000/teams/6194e685a0222a2e76ca9e01
 
 ### borrar un equipo
-DELETE http://localhost:3000/teams/6190dd5a4a522a968405f2fc
+DELETE http://localhost:3000/teams/6194e685a0222a2e76ca9e01
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 ### editar nombre de equipo
 PATCH http://localhost:3000/teams/name
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "61904b9ee1ffda4e8f85ece0",
+    "teamId": "6194e70aa0222a2e76ca9e25",
     "newName": "Borussia Dortmund"
 }
 
 ### editar url del escudo
 PATCH http://localhost:3000/teams/badge
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "61904b9ee1ffda4e8f85ece0",
-    "badgeURL": "hola"
+    "teamId": "6194e70aa0222a2e76ca9e25"
 }
 
 ### añadir jugador (se creará un ID para el jugador en el momento de ser añadido)
 PATCH http://localhost:3000/teams/add-player
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "61903b9ee1ffda4e8f85ece0",
+    "teamId": "6194e70aa0222a2e76ca9e25",
     "name": "malen"
 }
 
 ### borrar jugador
 POST http://localhost:3000/teams/delete-player
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "61904c2c6636743bfc8076d3",
-    "playerId": "61904c2c6sda646743bfc8076d7"
+    "teamId": "6194e70aa0222a2e76ca9e25",
+    "playerId": "6194e7e35696ba8ff06b5558"
 }
 
 ### editar jugador
 PATCH http://localhost:3000/teams/edit-player
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "619216bbcaacf5bca3276a98",
-    "playerId": "619216bbcaacf5bca3276a9a",
-    "newName": "malen"
+    "teamId": "6194e70aa0222a2e76ca9e25",
+    "playerId": "6194e70aa0222a2e76ca9e29",
+    "newName": "Courtuois"
 }
 
 ### recuperar jugadores de un equipo específico
-GET http://localhost:3000/teams/players/619056d0739339084c4fe478
+GET http://localhost:3000/teams/players/6194e70aa0222a2e76ca9e25
 
 
 ### recuperar plantilla de un equipo específico
-GET http://localhost:3000/teams/squad/612056d0739339084c4fe478
+GET http://localhost:3000/teams/squad/6194e70aa0222a2e76ca9e25
 
 
 ### añadir o cambiar técnico de un equipo
 POST http://localhost:3000/teams/manager
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "teamId": "629056d0739339084c4fe478",
-    "manager": "Nalgelsmann"
+    "teamId": "6194e70aa0222a2e76ca9e25",
+    "manager": "Ancelotti"
 }
 
 
 ### recuperar técnico de un equipo
-GET http://localhost:3000/teams/manager/619056d0739339084c4fe478
+GET http://localhost:3000/teams/manager/6194e70aa0222a2e76ca9e25
 

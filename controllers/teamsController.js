@@ -1,19 +1,29 @@
+const { validationResult } = require('express-validator');
+
 const Team = require("../models/team");
 
 exports.createTeam = async (req, res, next) => {
-  const name = req.body.name;
-  const badgeURL = req.body.badgeURL;
-  const players = req.body.players;
-  const managerName = req.body.manager;
-  const team = new Team({
-    name: name,
-    badgeURL: badgeURL,
-    squad: {
-      players: players,
-      manager: managerName,
-    },
-  });
+
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const error = new Error('Algo fallo!');
+      error.statusCode = 422;
+      error.data = errors.array();
+      throw error;
+    }
+    const name = req.body.name;
+    const badgeURL =  req.file ? req.file.path : "images/generic-logo.jpg";
+    const players = req.body.players;
+    const managerName = req.body.manager;
+    const team = new Team({
+      name: name,
+      badgeURL: badgeURL,
+      squad: {
+        players: players,
+        manager: managerName,
+      },
+    });
     const savedTeam = await team.save();
     res
       .status(201)
@@ -112,6 +122,13 @@ exports.deleteTeam = async (req, res, next) => {
 exports.editTeamName = async (req, res, next) => {
   const teamId = req.body.teamId;
   try {
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Algo fallo!');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
     const team = await Team.findOne({ _id: teamId });
     if (!team) {
       const error = new Error("El equipo no ha sido encontrado");
@@ -142,7 +159,7 @@ exports.editBadgeURL = async (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    team.badgeURL = req.body.badgeURL;
+    team.badgeURL =  req.file.path;
     const updatedTeam = await team.save();
     res.status(200).json({
       message: "El escudo del equipo ha sido actualziado con éxito",

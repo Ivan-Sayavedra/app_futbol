@@ -1,57 +1,83 @@
-### Admins
+# Authorized Emails
 
-### recuperar perfiles de administradores
+### crear email para autorización de registro
+POST http://localhost:3000/authorizedAdmin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Content-Type: application/json
+
+{
+    "email": "miguelrvg5@gmail.com"
+}
+
+### eliminar email de autorización
+DELETE http://localhost:3000/authorizedAdmin/miguelrvg35@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+
+### obtener emails de autorización
+GET http://localhost:3000/authorizedAdmin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+
+### editar email de autorización
+PUT http://localhost:3000/authorizedAdmin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Content-Type: application/json
+
+{
+    "email": "miguelrvg5@gmail.com",
+    "newEmail": "miguelrvg35@gmail.com"
+}
+
+# Admins
+
+### recuperar el perfil de administrador (se necesita haber iniciado sesión y mandar el token en los headers como aparece a continuación)
 GET http://localhost:3000/adminAuth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
-### crear perfil de administrador
+### enviar código de validación para crear perfil de administrador (se enviará un código al correo ingresado)
 POST http://localhost:3000/adminAuth
 Content-Type: application/json
 
 {
-    "userEmail": "miguelrvg5@gmail.com"
+    "userEmail": "miguelrvg5gmail.com"
+}
+
+### crear perfil de administrador (la contraseña debe de tener min. 8 caracteres, se debe de insertar el código enviado al email registrado)
+POST http://localhost:3000/adminAuth/register
+Content-Type: application/json
+
+{
+    "token": "021789",
+    "userName": "Miguelvg5",
+    "password": "lala1234"
+}
+
+###
+POST http://localhost:3000/adminAuth/login
+Content-Type: application/json
+
+{
+    "email": "miguelrvg5@gmail.com",
+    "password": "lala1234"
 }
 
 ### editar perfil 
 PUT http://localhost:3000/adminAuth
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "email": "admin1@gmail.com",
-    "newEmail": "miguelrvg312@gmail.com",
-    "newPassword": "hola",
-    "newName": "Miguel"
+    "password": "hola12345",
+    "newEmail": "miguelrvg5@gmail.com",
+    "newPassword": "lalala123",
+    "newUserName": "Miguel2"
 }
 
-### eliminar perfil de administrador
+### eliminar perfil de administrador (se necesita haber iniciado sesión)
 DELETE http://localhost:3000/adminAuth
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 {
-    "email": "miguelrvg5@gmail.com",
     "password": "hola"
 }
 
-### Authorized Emails
-
-### crear email para autorización de registro
-POST http://localhost:3000/authorizedAdmin
-Content-Type: application/json
-
-{
-    "email": "miguelrvg25@gmail.com"
-}
-
-### eliminar email de autorización
-DELETE http://localhost:3000/authorizedAdmin/miguelrvg4@gmail.com
-
-### obtener emails de autorización
-GET http://localhost:3000/authorizedAdmin
-
-### editar email de autorización
-PUT http://localhost:3000/authorizedAdmin
-Content-Type: application/json
-
-{
-    "email": "miguelrvg25@gmail.com",
-    "newEmail": "miguelrvg35@gmail.com"
-}

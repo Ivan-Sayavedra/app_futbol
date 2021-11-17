@@ -13,10 +13,62 @@ const matchSchema = new Schema({
         type: Object,
       },
       score: { type: Number, required: true },
-      injuredPlayers: [],
-      playersWithRedCard: [],
-      playersWithYellowCard: [],
-      scorers: [],
+      injuredPlayers: [
+        {
+          name: {
+            type: String,
+            required: true,
+          },
+          id: {
+            type: String,
+            required: true,
+          },
+          _id: false,
+        },
+      ],
+      playersWithRedCard: [
+        {
+          name: {
+            type: String,
+            required: true,
+          },
+          id: {
+            type: String,
+            required: true,
+          },
+          _id: false,
+        },
+      ],
+      playersWithYellowCard: [
+        {
+          name: {
+            type: String,
+            required: true,
+          },
+          id: {
+            type: String,
+            required: true,
+          },
+          _id: false,
+        },
+      ],
+      scorers: [
+        {
+          name: {
+            type: String,
+            required: true,
+          },
+          id: {
+            type: String,
+            required: true,
+          },
+          goals: {
+            type: Number,
+            required: true,
+          },
+          _id: false,
+        },
+      ],
       _id: false,
     },
   ],
@@ -84,7 +136,7 @@ matchSchema.methods.addPlayersWithYellowCard = function (id, player) {
 };
 
 matchSchema.methods.deletePlayersWithYellowCard = function (id, playerId) {
-  console.log(id,playerId)
+  console.log(id, playerId);
   for (let i = 0; i < this.teams.length; i++) {
     if (this.teams[i].team._id.toString() === id) {
       const updatedAdmonishedPlayers = this.teams[
@@ -102,20 +154,22 @@ matchSchema.methods.addScorers = function (id, player) {
   for (let i = 0; i < this.teams.length; i++) {
     if (this.teams[i].team._id.toString() === id) {
       this.teams[i].scorers.push(player);
-      this.teams[i].score += player.goals
+      this.teams[i].score += player.goals;
     }
   }
   return this.save();
 };
 
-matchSchema.methods.deleteScorers = function (id, player) {
+matchSchema.methods.deleteScorers = function (id, playerId) {
   for (let i = 0; i < this.teams.length; i++) {
     if (this.teams[i].team._id.toString() === id) {
+      let goals;
       const updatedScorers = this.teams[i].scorers.filter((p) => {
-        return p.id.toString() !== player.id;
+        goals = p.goals
+        return p.id.toString() !== playerId;
       });
       this.teams[i].scorers = updatedScorers;
-      this.teams[i].score -= player.goals
+      this.teams[i].score -= goals;
     }
   }
 
