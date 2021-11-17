@@ -3,6 +3,7 @@ const crypto = require("crypto-js");
 
 const Admin = require("../models/admin");
 const AuthorizedAdmin = require("../models/authorizedEmail");
+const config = require("../config")
 
 exports.getAdmins = async (req, res, next) => {
   try {
@@ -45,7 +46,7 @@ exports.createAdmin = async (req, res, next) => {
     await authorizedAdmin.save();
 
     sgMail.setApiKey(
-      "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"
+      config.sendGrid_key
     );
     const mail = {
       to: userEmail,

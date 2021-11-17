@@ -5,6 +5,7 @@ const adminValidationRoutes = require("./routes/adminValidation");
 const authorizedEmailRoutes = require("./routes/authorizedEmails");
 const teamRoutes = require("./routes/teams");
 const matchRoutes = require("./routes/matches");
+const config = require("./config")
 
 const app = express();
 
@@ -34,9 +35,9 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect("mongodb://Localhost:27017/football-app")
+  .connect(config.mongodb_URI)
   .then((result) => {
-    app.listen(3000);
+    app.listen(config.PORT);
     console.log("DB connected :)");
   })
   .catch((err) => console.log(err));
