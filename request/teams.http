@@ -1,12 +1,12 @@
 ### crear equipo
 POST http://localhost:3000/teams
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
-    "name": "Bayern",
-    "players": [{"name" : "muller"}, {"name" : "kimmich"}, {"name" : "hernandez"}, {"name" : "lewandowski"}],
-    "manager": "Nagelsmann"
+    "name": "PSG",
+    "players": [{"name" : "messi"}, {"name" : "mbappe"}, {"name" : "neymar"}, {"name" : "ramos"}],
+    "manager": "pochetino"
 }
 
 ### obtener todos los equipos
@@ -20,12 +20,12 @@ GET http://localhost:3000/teams/6194e685a0222a2e76ca9e01
 
 ### borrar un equipo
 DELETE http://localhost:3000/teams/6194e685a0222a2e76ca9e01
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 ### editar nombre de equipo
 PATCH http://localhost:3000/teams/name
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25",
@@ -35,7 +35,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3Vlb
 ### editar url del escudo
 PATCH http://localhost:3000/teams/badge
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25"
@@ -44,7 +44,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3Vlb
 ### añadir jugador (se creará un ID para el jugador en el momento de ser añadido)
 PATCH http://localhost:3000/teams/add-player
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25",
@@ -54,7 +54,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3Vlb
 ### borrar jugador
 POST http://localhost:3000/teams/delete-player
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25",
@@ -64,7 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3Vlb
 ### editar jugador
 PATCH http://localhost:3000/teams/edit-player
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25",
@@ -83,7 +83,7 @@ GET http://localhost:3000/teams/squad/6194e70aa0222a2e76ca9e25
 ### añadir o cambiar técnico de un equipo
 POST http://localhost:3000/teams/manager
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer token
 
 {
     "teamId": "6194e70aa0222a2e76ca9e25",

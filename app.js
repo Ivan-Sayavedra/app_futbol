@@ -8,6 +8,7 @@ const adminAuthRoutes = require("./routes/adminAuth");
 const authorizedEmailRoutes = require("./routes/authorizedEmails");
 const teamRoutes = require("./routes/teams");
 const matchRoutes = require("./routes/matches");
+const fixtureRoutes = require("./routes/fixtures")
 const config = require("./config")
 
 const app = express();
@@ -54,6 +55,7 @@ app.use("/adminAuth", adminAuthRoutes);
 app.use("/authorizedAdmin", authorizedEmailRoutes);
 app.use("/teams", teamRoutes);
 app.use("/matches", matchRoutes);
+app.use("/fixtures", fixtureRoutes)
 
 app.use((error, req, res, next) => {
   console.log(error);

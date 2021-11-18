@@ -1,4 +1,4 @@
-# Authorized Emails
+# Authorized Emails (por el momento se pueden usar estas rutas sin mandar headers de autenticación)
 
 ### crear email para autorización de registro
 POST http://localhost:3000/authorizedAdmin
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ### recuperar el perfil de administrador (se necesita haber iniciado sesión y mandar el token en los headers como aparece a continuación)
 GET http://localhost:3000/adminAuth
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MTk0NTMyLCJleHAiOjE2MzcyMDE3MzJ9.d3jh5NeVQgNO8GV5ppy-r8YHGwHK-cRNX3ggmN3e-XU
 
 ### enviar código de validación para crear perfil de administrador (se enviará un código al correo ingresado)
 POST http://localhost:3000/adminAuth
@@ -51,13 +51,13 @@ Content-Type: application/json
     "password": "lala1234"
 }
 
-###
+### iniciar sesión
 POST http://localhost:3000/adminAuth/login
 Content-Type: application/json
 
 {
-    "email": "miguelrvg5@gmail.com",
-    "password": "lala1234"
+    "email": "usario1@test.com",
+    "password": "lalala123"
 }
 
 ### editar perfil 

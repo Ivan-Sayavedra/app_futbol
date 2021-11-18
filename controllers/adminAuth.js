@@ -140,8 +140,7 @@ exports.postSignUp = async (req, res, next) => {
         email: savedAdmin.email,
         adminId: savedAdmin._id.toString()
       },
-      'somesupersecretsecret',
-      { expiresIn: '2h' }
+      'somesupersecretsecret'
     );
     console.log(token)
     res.status(201).json({

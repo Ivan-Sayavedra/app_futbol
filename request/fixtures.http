@@ -1,0 +1,68 @@
+### obtener todos los partidos por fecha
+GET http://localhost:3000/fixtures/date/
+
+### obtener todos los partidos de una jornada (el parametro que sigue despues de "fixtures" hace referencia al numero de la jornada)
+GET http://localhost:3000/fixtures/2
+
+### obtener todas las jornadas 
+GET http://localhost:3000/fixtures/
+
+### crear una nueva jornada, "day" hace referencia al número de jornada
+POST http://localhost:3000/fixtures/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+{
+    "day" : 2,
+    "matches" : [{"team1Id" : "6194e70aa0222a2e76ca9e25", "team2Id" : "6194e91f5696ba8ff06b5583", "date": "2021-11-18T01:40:44.959Z"}, {"team1Id" : "61959c54678872c8912ed2cd", "team2Id" : "61959c77678872c8912ed2d3", "date": "2021-11-18T01:40:44.959Z"}]
+
+}
+
+### eliminar una jornada
+DELETE http://localhost:3000/fixtures/6195cb07839557a1666fc201
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+### cambiar el número de una jornada (day)
+PATCH http://localhost:3000/fixtures/day
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+{
+    "actualDay" : 1,
+    "newDay" : 2
+}
+
+### añadir un nuevo partido a una jornada
+PATCH http://localhost:3000/fixtures/add-match
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+{
+    "fixtureId" : "6195af5c72a078d888e73fe9",
+    "date": "2021-11-18",
+    "team1Id" : "6194e70aa0222a2e76ca9e25",
+    "team2Id" : "6194e91f5696ba8ff06b5583"
+}
+
+### eliminar un partido de una jornada
+PATCH http://localhost:3000/fixtures/delete-match
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+{
+    "fixtureId" : "6195af5c72a078d888e73fe9",
+    "matchId" : "6195ce81b99446c84d57f8ec"
+}
+
+### editar un partido de una jornada
+PATCH http://localhost:3000/fixtures/edit-match
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+
+{
+    "fixtureId" : "6195af5c72a078d888e73fe9",
+    "matchId" : "6195af5c72a078d888e73feb",
+    "newTeam1Id" : "61959c54678872c8912ed2cd",
+    "newTeam2Id" : "6194e70aa0222a2e76ca9e25",
+    "newDate": "2021-02-18"
+}
