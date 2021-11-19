@@ -185,8 +185,7 @@ exports.login = async (req,res,next) => {
         email: admin.email,
         adminId: admin._id.toString()
       },
-      'somesupersecretsecret',
-      { expiresIn: '2h' }
+      'somesupersecretsecret'
     );
     console.log(token)
     res.status(200).json({ token: token, adminId: admin._id.toString() });

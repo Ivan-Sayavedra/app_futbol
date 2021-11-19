@@ -19,8 +19,8 @@ GET http://localhost:3000/teams/positions
 GET http://localhost:3000/teams/6194e685a0222a2e76ca9e01
 
 ### borrar un equipo
-DELETE http://localhost:3000/teams/6194e685a0222a2e76ca9e01
-Authorization: Bearer token
+DELETE http://localhost:3000/teams/619770091d13029793503c12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MzE0NDk3LCJleHAiOjE2MzczMjE2OTd9.YM8aN21p2GA5hrdIAxR6gaQnurYaq1HbXhXqLS2rHp0
 
 ### editar nombre de equipo
 PATCH http://localhost:3000/teams/name
