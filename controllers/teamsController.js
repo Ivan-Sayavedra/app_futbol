@@ -60,7 +60,7 @@ exports.getTeam = async (req, res, next) => {
 
 exports.getAllTeams = async (req, res, next) => {
   try {
-    const teams = await Team.find();
+    const teams = await Team.find().select("name badgeURL");
     res.status(200).json({ teams: teams });
   } catch (err) {
     if (!err.statusCode) {
@@ -72,27 +72,31 @@ exports.getAllTeams = async (req, res, next) => {
 
 exports.getPositions = async (req, res, next) => {
   try {
-    const teams = await Team.find();
-    teams.forEach((team) => {
-      team.points = team.record.wins * 3 + team.record.draws;
-    });
-    teams.sort((a, b) => b.points - a.points);
-
-    const organizedTeams = [];
+    const teams = await Team.find().select(
+      "name badgeURL record goalsScored goalsAgainst"
+    );
+    const updatedTeams = [];
     teams.forEach((p) => {
       const team = {
-        id: p._id,
         name: p.name,
         badgeURL: p.badgeURL,
         record: p.record,
-        points: p.points,
         goalsScored: p.goalsScored,
-        goalsAgaints: p.goalsAgainst,
-        points: p.points,
+        goalsAgainst: p.goalsAgainst,
+        points: p.record.wins * 3 + p.record.draws,
+        balance: p.goalsScored - p.goalsAgainst,
       };
-      organizedTeams.push(team);
+
+      updatedTeams.push(team);
     });
-    res.status(200).json({ teams: organizedTeams });
+    updatedTeams.sort((a, b) => {
+      b.points - a.points;
+      if (b.points === a.points) {
+        return b.balance - a.balance;
+      }
+    });
+
+    res.status(200).json({ teams: updatedTeams });
   } catch (err) {
     if (!err.statusCode) {
       err.statudCode = 500;
@@ -110,7 +114,10 @@ exports.deleteTeam = async (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    clearImage(team.badgeURL);
+    const genericLogoURL = "images/generic-logo.jpg";
+    if (team.badgeURL !== genericLogoURL) {
+      clearImage(team.badgeURL);
+    }
     const deletedTeam = await Team.findOneAndRemove({ _id: teamId });
     res.status(200).json({
       message: "El equipo ha sido eliminado con exito",
@@ -164,11 +171,14 @@ exports.editBadgeURL = async (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    clearImage(team.badgeURL)
-    team.badgeURL = req.file.path.replace("\\", "/")
-    const updatedTeam = await team.save();
+    const genericLogoURL = "images/generic-logo.jpg";
+    if (team.badgeURL !== genericLogoURL) {
+      clearImage(team.badgeURL);
+    }
+    team.badgeURL = req.file.path.replace("\\", "/");
+    await team.save();
     res.status(200).json({
-      message: "El escudo del equipo ha sido actualziado con éxito"
+      message: "El escudo del equipo ha sido actualziado con éxito",
     });
   } catch (err) {
     if (!err.statusCode) {
@@ -263,14 +273,14 @@ exports.editPlayer = async (req, res, next) => {
 exports.getPlayers = async (req, res, next) => {
   const teamId = req.params.teamId;
   try {
-    const team = await Team.findOne({ _id: teamId });
-    if (!team) {
+    const nonFormattedPlayers = await Team.findOne({ _id: teamId }).select("squad.players");
+    if (!nonFormattedPlayers) {
       const error = new Error("El equipo no ha sido encontrado");
       error.statusCode = 404;
       throw error;
     }
-    const players = await team.getPlayers();
-    res.status(200).json({ players: players });
+    const players = nonFormattedPlayers.squad.players
+    res.status(200).json( players );
   } catch (err) {
     if (!err.statusCode) {
       err.statudCode = 500;
@@ -282,14 +292,14 @@ exports.getPlayers = async (req, res, next) => {
 exports.getSquad = async (req, res, next) => {
   const teamId = req.params.teamId;
   try {
-    const team = await Team.findOne({ _id: teamId });
-    if (!team) {
+    const nonFormattedSquad = await Team.findOne({ _id: teamId }).select("squad");
+    if (!nonFormattedSquad) {
       const error = new Error("El equipo no ha sido encontrado");
       error.statusCode = 404;
       throw error;
     }
-    const squad = await team.getSquad();
-    res.status(200).json({ squad: squad });
+    const squad = nonFormattedSquad.squad
+    res.status(200).json( squad);
   } catch (err) {
     if (!err.statusCode) {
       err.statudCode = 500;
@@ -324,18 +334,20 @@ exports.addManager = async (req, res, next) => {
 exports.getManager = async (req, res, next) => {
   const teamId = req.params.teamId;
   try {
-    const team = await Team.findOne({ _id: teamId });
-    if (!team) {
+    const nonFormattedManager = await Team.findOne({ _id: teamId }).select("squad.manager");
+    if (!nonFormattedManager) {
       const error = new Error("El equipo no ha sido encontrado");
       error.statusCode = 404;
       throw error;
     }
-    const manager = await team.getManager();
+
+    const manager = nonFormattedManager.squad.manager
     if (!manager) {
       const error = new Error("El equipo no cuenta con un DT asignado");
       error.statusCode = 404;
       throw error;
     }
+  
     res.status(200).json({ manager: manager });
   } catch (err) {
     if (!err.statusCode) {

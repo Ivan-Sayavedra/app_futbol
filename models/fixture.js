@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const fixtureSchema = new Schema({
   matches: [
     {
-      team1Id: { type: Schema.Types.ObjectId, ref: "Team", required: true },
-      team2Id: { type: Schema.Types.ObjectId, ref: "Team", required: true },
+     localTeam: { type: Schema.Types.ObjectId, ref: "Team", required: true },
+      awayTeam: { type: Schema.Types.ObjectId, ref: "Team", required: true },
       date: { type: Date, required: true }
     },
   ],
@@ -16,10 +16,10 @@ const fixtureSchema = new Schema({
   },
 });
 
-fixtureSchema.methods.createMatch = function (date, team1Id, team2Id) {
+fixtureSchema.methods.createMatch = function (date,localTeam, awayTeam) {
   const match = {
-    team1Id: team1Id,
-    team2Id: team2Id,
+   localTeam:localTeam,
+    awayTeam: awayTeam,
     date: date,
   };
   this.matches.push(match);
@@ -34,11 +34,11 @@ fixtureSchema.methods.deleteMatch = function (matchId) {
   return this.save();
 };
 
-fixtureSchema.methods.editMatch = function (matchId, team1Id, team2Id, date) {
+fixtureSchema.methods.editMatch = function (matchId,localTeam, awayTeam, date) {
   this.matches.forEach((p) => {
     if (p._id.toString() === matchId) {
-      p.team1Id = team1Id;
-      p.team2Id = team2Id;
+      p.localTeam =localTeam;
+      p.awayTeam = awayTeam;
       p.date = date;
     }
   });

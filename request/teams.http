@@ -19,8 +19,8 @@ GET http://localhost:3000/teams/positions
 GET http://localhost:3000/teams/6194e685a0222a2e76ca9e01
 
 ### borrar un equipo
-DELETE http://localhost:3000/teams/619770091d13029793503c12
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MzE0NDk3LCJleHAiOjE2MzczMjE2OTd9.YM8aN21p2GA5hrdIAxR6gaQnurYaq1HbXhXqLS2rHp0
+DELETE http://localhost:3000/teams/6194e70aa0222a2e76ca9e25
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3NDc5NjAyfQ.76D2YaKvOzJUi8U3gMCkgCD8UaEK-oh3z4YkqH1seos
 
 ### editar nombre de equipo
 PATCH http://localhost:3000/teams/name
@@ -73,24 +73,24 @@ Authorization: Bearer token
 }
 
 ### recuperar jugadores de un equipo específico
-GET http://localhost:3000/teams/players/6194e70aa0222a2e76ca9e25
+GET http://localhost:3000/teams/players/61959c54678872c8912ed2cd
 
 
 ### recuperar plantilla de un equipo específico
-GET http://localhost:3000/teams/squad/6194e70aa0222a2e76ca9e25
+GET http://localhost:3000/teams/squad/61959c54678872c8912ed2cd
 
 
 ### añadir o cambiar técnico de un equipo
 POST http://localhost:3000/teams/manager
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3NDc5NjAyfQ.76D2YaKvOzJUi8U3gMCkgCD8UaEK-oh3z4YkqH1seos
 
 {
-    "teamId": "6194e70aa0222a2e76ca9e25",
-    "manager": "Ancelotti"
+    "teamId": "61959c54678872c8912ed2cd",
+    "manager": "Xavi"
 }
 
 
 ### recuperar técnico de un equipo
-GET http://localhost:3000/teams/manager/6194e70aa0222a2e76ca9e25
+GET http://localhost:3000/teams/manager/61959c54678872c8912ed2cd
 

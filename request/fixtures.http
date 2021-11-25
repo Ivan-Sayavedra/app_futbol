@@ -10,11 +10,11 @@ GET http://localhost:3000/fixtures/
 ### crear una nueva jornada, "day" hace referencia al número de jornada
 POST http://localhost:3000/fixtures/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3MjA2ODg0LCJleHAiOjE2MzcyMTQwODR9.BXZYLdmjmG4BGdyScTYAMLET6JCMTIKT6dMSnSVh5pc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3Nzk0MjQyfQ.J_gDNrPsEWwNAbr9ZdGlGP4RjbYvY05PKNmgqC11WGk
 
 {
     "day" : 2,
-    "matches" : [{"team1Id" : "6194e70aa0222a2e76ca9e25", "team2Id" : "6194e91f5696ba8ff06b5583", "date": "2021-11-18T01:40:44.959Z"}, {"team1Id" : "61959c54678872c8912ed2cd", "team2Id" : "61959c77678872c8912ed2d3", "date": "2021-11-18T01:40:44.959Z"}]
+    "matches" : [{"localTeam" : "6194e70aa0222a2e76ca9e25", "awayTeam" : "6194e91f5696ba8ff06b5583", "date": "2021-11-18T01:40:44.959Z"}, {"localTeam" : "61959c54678872c8912ed2cd", "awayTeam" : "61959c77678872c8912ed2d3", "date": "2021-11-18T01:40:44.959Z"}]
 
 }
 
@@ -40,8 +40,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpb
 {
     "fixtureId" : "6195af5c72a078d888e73fe9",
     "date": "2021-11-18",
-    "team1Id" : "6194e70aa0222a2e76ca9e25",
-    "team2Id" : "6194e91f5696ba8ff06b5583"
+    "localTeam" : "6194e70aa0222a2e76ca9e25",
+    "awayTeam" : "6194e91f5696ba8ff06b5583"
 }
 
 ### eliminar un partido de una jornada
@@ -62,7 +62,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpb
 {
     "fixtureId" : "6195af5c72a078d888e73fe9",
     "matchId" : "6195af5c72a078d888e73feb",
-    "newTeam1Id" : "61959c54678872c8912ed2cd",
-    "newTeam2Id" : "6194e70aa0222a2e76ca9e25",
+    "localTeam" : "61959c54678872c8912ed2cd",
+    "awayTeam" : "6194e70aa0222a2e76ca9e25",
     "newDate": "2021-02-18"
 }

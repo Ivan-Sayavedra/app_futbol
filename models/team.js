@@ -84,22 +84,13 @@ teamSchema.methods.editPlayerFromSquad = async function (player) {
   }
 };
 
-teamSchema.methods.getPlayers = function () {
-  return this.squad.players;
-};
+
 
 teamSchema.methods.addManager = function (manager) {
   this.squad.manager = manager;
   return this.save();
 };
 
-teamSchema.methods.getManager = function () {
-  return this.squad.manager;
-};
-
-teamSchema.methods.getSquad = function () {
-  return this.squad;
-};
 
 teamSchema.methods.assignResult = function (result1, result2, boolean) {
   console.log(result1, result2);

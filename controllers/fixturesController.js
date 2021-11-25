@@ -4,8 +4,8 @@ exports.getFixture = async (req, res, next) => {
   const day = req.params.day;
   try {
     const fixture = await Fixture.findOne({ day: day })
-      .populate({ path: "matches.team1Id", select: "name badgeURL _id" })
-      .populate({ path: "matches.team2Id", select: "name badgeURL _id" })
+      .populate({ path: "matches.localTeam", select: "name badgeURL _id" })
+      .populate({ path: "matches.awayTeam", select: "name badgeURL _id" })
       .exec();
     if (!fixture) {
       const error = new Error("La jornada no ha sido encontrada");
@@ -31,8 +31,8 @@ exports.getFixture = async (req, res, next) => {
 exports.getAllFixtures = async (req, res, next) => {
   try {
     const fixtures = await Fixture.find()
-      .populate({ path: "matches.team1Id", select: "name badgeURL _id" })
-      .populate({ path: "matches.team2Id", select: "name badgeURL _id" })
+      .populate({ path: "matches.localTeam", select: "name badgeURL _id" })
+      .populate({ path: "matches.awayTeam", select: "name badgeURL _id" })
       .exec();
     res.status(200).json({ fixtures: fixtures });
   } catch (err) {
@@ -119,8 +119,8 @@ exports.getMatchesByDate = async (req, res, next) => {
   const date = new Date(req.params.date);
   try {
     const matches = Fixture.find({ date: date }).populate(
-      "matches.teamId1",
-      "matches.teamId2"
+      "matches.localTeam",
+      "matches.awayTeam"
     );
     if (matches.length === 0) {
       const error = new Error(
@@ -148,9 +148,9 @@ exports.createMatch = async (req, res, next) => {
       throw error;
     }
     const date = new Date(req.body.date);
-    const team1Id = req.body.team1Id;
-    const team2Id = req.body.team2Id;
-    await fixture.createMatch(date, team1Id, team2Id);
+    const localTeam = req.body.localTeam;
+    const awayTeam = req.body.awayTeam;
+    await fixture.createMatch(date, localTeam, awayTeam);
     res
       .status(200)
       .json({ message: "El partido ha sido creado satisfactoriamente" });
@@ -195,11 +195,11 @@ exports.editMatch = async (req, res, next) => {
       throw error;
     }
     const matchId = req.body.matchId;
-    const team1Id = req.body.newTeam1Id;
-    const team2Id = req.body.newTeam2Id;
+    const localTeam = req.body.localTeam;
+    const awayTeam = req.body.awayTeam;
     const date = req.body.newDate;
     const updatedFixture = await fixture
-      .editMatch(matchId, team1Id, team2Id, date)
+      .editMatch(matchId, localTeam, awayTeam, date)
     res
       .status(200)
       .json({
