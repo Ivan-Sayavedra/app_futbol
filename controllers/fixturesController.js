@@ -118,7 +118,7 @@ exports.changeDay = async (req, res, next) => {
 exports.getMatchesByDate = async (req, res, next) => {
   const date = new Date(req.params.date);
   try {
-    const matches = Fixture.find({ date: date }).populate(
+    const matches = await Fixture.find({ date: date }).populate(
       "matches.localTeam",
       "matches.awayTeam"
     );

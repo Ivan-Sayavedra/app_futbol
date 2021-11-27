@@ -1,7 +1,7 @@
 ### crear equipo
 POST http://localhost:3000/teams
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3OTAzOTU1fQ.alZ22phXk__nBVZ3DK60bTC9wQsZGyGT2cktobsC11Y
 
 {
     "name": "PSG",
@@ -13,10 +13,10 @@ Authorization: Bearer token
 GET http://localhost:3000/teams
 
 ### obtener todos los equipos por posiciones, sin datos de la plantilla (ideal para tablas de puntaje de la liga) 
-GET http://localhost:3000/teams/positions
+GET http://localhost:3000/teams/positions/
 
 ### obtener un equipo en específico
-GET http://localhost:3000/teams/6194e685a0222a2e76ca9e01
+GET http://localhost:3000/teams/61959c77678872c8912ed2d3
 
 ### borrar un equipo
 DELETE http://localhost:3000/teams/6194e70aa0222a2e76ca9e25
@@ -52,7 +52,7 @@ Authorization: Bearer token
 }
 
 ### borrar jugador
-POST http://localhost:3000/teams/delete-player
+PATCH http://localhost:3000/teams/delete-player
 Content-Type: application/json
 Authorization: Bearer token
 

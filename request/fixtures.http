@@ -1,5 +1,6 @@
 ### obtener todos los partidos por fecha
-GET http://localhost:3000/fixtures/date/
+GET http://localhost:3000/fixtures/date/2021-11-11
+
 
 ### obtener todos los partidos de una jornada (el parametro que sigue despues de "fixtures" hace referencia al numero de la jornada)
 GET http://localhost:3000/fixtures/2
@@ -13,7 +14,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3Nzk0MjQyfQ.J_gDNrPsEWwNAbr9ZdGlGP4RjbYvY05PKNmgqC11WGk
 
 {
-    "day" : 2,
+    "day" : 1,
     "matches" : [{"localTeam" : "6194e70aa0222a2e76ca9e25", "awayTeam" : "6194e91f5696ba8ff06b5583", "date": "2021-11-18T01:40:44.959Z"}, {"localTeam" : "61959c54678872c8912ed2cd", "awayTeam" : "61959c77678872c8912ed2d3", "date": "2021-11-18T01:40:44.959Z"}]
 
 }

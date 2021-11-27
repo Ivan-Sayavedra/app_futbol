@@ -102,8 +102,9 @@ exports.signUp = async (req, res, next) => {
 
 exports.postSignUp = async (req, res, next) => {
   
-  const token = req.body.token;
+
   try {
+      const token = req.body.token;
     const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error('Algo fallo!');
@@ -135,18 +136,18 @@ exports.postSignUp = async (req, res, next) => {
       name: name,
     });
     const savedAdmin = await admin.save();
-    const token = jwt.sign(
+    const jwtToken = jwt.sign(
       {
         email: savedAdmin.email,
         adminId: savedAdmin._id.toString()
       },
       'somesupersecretsecret'
     );
-    console.log(token)
+    console.log(jwtToken)
     res.status(201).json({
       message: "El usuario fue creado de forma satisfactoria",
       admin: savedAdmin,
-      token: token, adminId: savedAdmin._id.toString()
+      token: jwtToken, adminId: savedAdmin._id.toString()
     });
   } catch (err) {
     if (!err.statusCode) {
@@ -254,12 +255,13 @@ exports.deleteAdmin = async (req, res, next) => {
       throw error;
     }
     const password = req.body.password;
+    console.log(req.body)
     if (password !== user.password) {
       const error = new Error("Contraseña incorrecta");
       error.statusCode = 401;
       throw error;
     }
-    const deletedUser = await Admin.findOneAndRemove({ email: email });
+    const deletedUser = await Admin.findOneAndRemove({ email: user.email });
     res
       .status(200)
       .json({ message: "El usuario ha sido eliminado", user: deletedUser });

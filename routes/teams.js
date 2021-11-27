@@ -29,7 +29,7 @@ router.patch("/badge", isAuth, teamsController.editBadgeURL);
 
 router.patch("/add-player", isAuth, teamsController.addPlayer);
 
-router.post("/delete-player", isAuth, teamsController.removePlayer);
+router.patch("/delete-player", isAuth, teamsController.removePlayer);
 
 router.patch("/edit-player", isAuth, teamsController.editPlayer);
 

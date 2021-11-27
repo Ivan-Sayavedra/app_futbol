@@ -11,6 +11,7 @@ const matchSchema = new Schema({
     {
       team: {
         type: Object,
+        required: true,
       },
       score: { type: Number, required: true },
       injuredPlayers: [

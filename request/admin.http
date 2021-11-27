@@ -1,24 +1,24 @@
 # Authorized Emails (por el momento se pueden usar estas rutas sin mandar headers de autenticación)
 
 ### crear email para autorización de registro
-POST http://localhost:3000/authorizedAdmin
+POST http://localhost:3000/authorizedEmail
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 Content-Type: application/json
 
 {
-    "email": "miguelrvg5@gmail.com"
+    "email": "miguelrvg51@gmail.com"
 }
 
 ### eliminar email de autorización
-DELETE http://localhost:3000/authorizedAdmin/miguelrvg35@gmail.com
+DELETE http://localhost:3000/authorizedEmail/miguelrvg35@gmail.com
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 ### obtener emails de autorización
-GET http://localhost:3000/authorizedAdmin
+GET http://localhost:3000/authorizedEmail
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 
 ### editar email de autorización
-PUT http://localhost:3000/authorizedAdmin
+PUT http://localhost:3000/authorizedEmail
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
 Content-Type: application/json
 
@@ -38,7 +38,7 @@ POST http://localhost:3000/adminAuth
 Content-Type: application/json
 
 {
-    "userEmail": "miguelrvg5gmail.com"
+    "userEmail": "migue2lrvg5@gmail.com"
 }
 
 ### crear perfil de administrador (la contraseña debe de tener min. 8 caracteres, se debe de insertar el código enviado al email registrado)
@@ -46,9 +46,9 @@ POST http://localhost:3000/adminAuth/register
 Content-Type: application/json
 
 {
-    "token": "021789",
+    "token": "0217839",
     "userName": "Miguelvg5",
-    "password": "lala1234"
+    "password": "l1234"
 }
 
 ### iniciar sesión
@@ -68,16 +68,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3Vlb
 {
     "password": "hola12345",
     "newEmail": "miguelrvg5@gmail.com",
-    "newPassword": "lalala123",
+    "newPassword": "lalla123",
     "newUserName": "Miguel2"
 }
 
 ### eliminar perfil de administrador (se necesita haber iniciado sesión)
 DELETE http://localhost:3000/adminAuth
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxOTRlMDFiODc4NDA1N2MzMGE5MTgxZSIsImlhdCI6MTYzNzE0NjkwMiwiZXhwIjoxNjM3MTU0MTAyfQ.nhcDSuXC3VpIzj7Mg2UPcCnJI1xIMkC8QuYl13um4pk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZ3VlbHJ2ZzVAZ21haWwuY29tIiwiYWRtaW5JZCI6IjYxYTE3MjczZTkxNzdjMmU2YTRmZmQ4NiIsImlhdCI6MTYzNzk3MjQzMn0.2RB5tFfI-q0pHP2NRHfqxSEkc-LMObsU6nnn5ZEzxNw
 
 {
-    "password": "hola"
+    "password": "lala1234"
 }
 

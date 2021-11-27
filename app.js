@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/adminAuth", adminAuthRoutes);
-app.use("/authorizedAdmin", authorizedEmailRoutes);
+app.use("/authorizedEmail", authorizedEmailRoutes);
 app.use("/teams", teamRoutes);
 app.use("/matches", matchRoutes);
 app.use("/fixtures", fixtureRoutes)

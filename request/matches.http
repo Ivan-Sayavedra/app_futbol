@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpb
     "playersWithRedCard":[{"name":"Militao", "id":"619300fa48c2abd2af039f60"}], 
     "scorers": [{"name": "benzema","id":"619300fa48c2abd2af039f5e","goals": 2},{"name": "Vinicius", "id":"619300fa48c2abd2af039f5f","goals": 2}]
     },
-    "date": "2021-11-15T08:37:18.736Z"
+    "date": "2021-11-15"
 }
 
 
@@ -27,7 +27,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpb
 GET http://localhost:3000/matches
 
 ### Obtener una planilla de partido específica
-GET http://localhost:3000/matches/619c82d7385d9ef8e925ba5f
+GET http://localhost:3000/matches/619c83d914d11b4e2cbcc8ae
 
 ### Eliminar una planilla de partido
 DELETE http://localhost:3000/matches/619c82d7385d9ef8e925ba5f
@@ -36,18 +36,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpb
 ### Modificar los goles en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos)
 PATCH http://localhost:3000/matches/score/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3NDc5NjAyfQ.76D2YaKvOzJUi8U3gMCkgCD8UaEK-oh3z4YkqH1seos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3OTQ5NzM2fQ.N9wz-xJxjs2Dk9wHt2vwpupOYXvnorc_9WhFKgs_Ayo
 
 {
     "matchId": "619c83d914d11b4e2cbcc8ae",
-    "localTeamScore" :  2,
-    "awayTeamScore": 2
+    "localTeamScore" :  5,
+    "awayTeamScore": 4
 }
 
 ### Añadir marcadores en una planilla de partido (También se modifican las victorias y los goles a favor y en contra en los equipos, así como el resultado en la planilla)
 PATCH http://localhost:3000/matches/add-scorers/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3NDc5NjAyfQ.76D2YaKvOzJUi8U3gMCkgCD8UaEK-oh3z4YkqH1seos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzYXJpbzFAdGVzdC5jb20iLCJhZG1pbklkIjoiNjE5NGUwMWI4Nzg0MDU3YzMwYTkxODFlIiwiaWF0IjoxNjM3OTQ5NzM2fQ.N9wz-xJxjs2Dk9wHt2vwpupOYXvnorc_9WhFKgs_Ayo
 
 {
     "matchId": "619c83d914d11b4e2cbcc8ae",

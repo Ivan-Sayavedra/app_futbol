@@ -160,6 +160,7 @@ exports.updateScore = async (req, res, next) => {
       await awayTeam.assignResult(newScoreAwayTeam, newScoreLocalTeam, true);
     }
     await match.save();
+    res.status(200).json({message:"El resultado ha sido modificado de forma satisfactoria", match: match})
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

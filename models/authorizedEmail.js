@@ -14,6 +14,10 @@ const adminRegisterSchema = new Schema(
         tokenExpiration:{
             type: Date,
         }
-})
+        
+},
+{
+    versionKey: false,
+  })
 
 module.exports = mongoose.model("AdminsRegister", adminRegisterSchema)
